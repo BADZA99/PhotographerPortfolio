@@ -1,0 +1,416 @@
+$blanCasse: #f1f1f1;
+$blanGris: #f5f5f5;
+$sombre:#333;
+
+@mixin FlexCentreX{
+    display: flex;
+    justify-content: center;
+}
+
+*,::after,::before{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh; 
+}
+
+// -----------------------------------partie navbar------------------------------------------------
+
+.navbar{
+    height: 60px;
+    width: 100%;
+    background: $blanGris;
+    @include FlexCentreX;
+    position: fixed;
+    z-index: 100;
+    border-bottom: 1px solid black;
+    .contItems{
+        font-size: 22px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        .items{
+            margin-right: 30px;
+            color: $sombre;
+            text-decoration: none;
+            &:hover{
+                color: #5f5f5f;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+// -----------------------------------PARTIE ACCEUIL-------------------------------------------
+
+.acceuil{
+    height: 800px;
+    width: 100%;
+    background-color:$sombre;
+    background: url(../ressources/home.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    // changement d'axe x en y pouis le centrer avec align-items
+    flex-direction: column;
+    align-items: center;
+
+    h1{
+        font-family: 'Abril Fatface',sans-serif;
+        color: $blanCasse;
+        font-size: 70px;
+        letter-spacing: 5px;
+        margin: 0;
+        position: relative;
+        padding-top: 150px;
+
+        &::first-letter{
+            font-size: 150px;
+        }
+    }
+
+    .sousTitreP{
+        color: $blanCasse;
+        font-family: 'Poppins',sans-serif;
+        font-size: 22px;
+
+    }
+}
+
+// mettre le site responsive 
+
+@media screen and (max-width: 1000px){
+    // 1000px car le design du h1 se casse a partir de 1000px pour petie ecran ordinateur
+    .acceuil h1{ 
+       font-size: 50px;  
+    }
+}
+
+// design pour mode tablette
+
+@media screen and (max-width: 768px) {
+   .acceuil {
+        height: 600px;
+        h1{
+            font-size: 30px;
+        }
+        .sousTitreP{
+            font-size: 16px;
+        }
+   } 
+
+}
+// mode telephone
+@media screen and (max-width: 550px) {
+   .acceuil {
+        height: 500px;
+        align-items: flex-start;
+        h1{
+            margin: 0px 20px;
+
+            &::first-letter{
+                font-size: 50px;
+            }
+        }
+        .sousTitreP{
+            margin: 0px 20px;
+        }
+   } 
+}
+
+.logomenuimg {
+    display: none;
+    margin-left: auto;
+    margin-top: 0;
+}
+
+
+
+   
+
+
+// Partie responsive du menu
+@media  screen and (max-width:700px ) {
+    .navbar{
+        display: block;
+        .contItems{
+            display: none;
+            border: solid 1px black;
+
+            .items{
+                background: $blanGris;
+                margin-right: 0;
+                padding: 10px 20px;
+                display: block;
+                
+                &:nth-child(1){
+                    padding-top: 20px;
+
+                }
+            }
+
+        }
+
+        .logomenuimg{
+            display: block;
+            width: 50px;
+            margin-left: auto;
+            position: absolute;
+            top:0;
+            right: 0;
+        }
+
+        .responsive {
+            display: block;
+            margin-top: 50px;
+        }
+
+    }
+      
+}
+
+// -----------------------------------PARTIE TEXTE ET IMAGE-------------------------------------------
+.texteSec1{
+    text-align: center;
+    font-size: 40px;
+    padding-top: 20px;
+}
+
+.textImg{
+    padding-top: 20px;
+    width: 100%;
+    @include FlexCentreX;
+    border-bottom:1px dashed lightskyblue ;
+
+    .flexContainerSection1{
+
+        @include FlexCentreX;
+        width: 1200px;
+
+        .contImgSec1{
+            width: 45%;
+            margin: 20px;
+            
+            
+            img{
+                width: 100%;
+                height: auto;
+                border-radius: 2px;
+                box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.5);
+            }
+
+            img:hover{
+                transition: all 0.5s ease;
+                box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+            }
+    
+        }
+
+        .contTxtSec1{
+            width: 45%;
+            background:azure;
+            margin: 20px;
+            border-radius: 2px;
+
+            h2{
+                text-align: center;
+                font-size: 35px;
+            }
+
+            .sousTitreSec1{
+                text-align: center;
+            }
+            
+            hr{
+                width: 50px;
+            }
+
+            .txtSec1{
+                font-size: 19px;
+                padding: 15px;
+
+                &::first-letter{
+                    font-size: 60px;
+                }
+
+            }
+
+        }
+    }
+    
+}
+
+@media screen  and (max-width:1200px){
+    .flexContainerSection1{
+        flex-direction: column;
+        align-items: center;
+        width: 300px;
+
+        .contImgSec1{
+            width: 100%;
+        }
+
+        .contTxtSec1{
+            width: 100%;
+        }
+
+    }
+    
+}
+
+@media screen and (max-width:550px){
+    .titreSec1{
+        font-size: 25px;
+    }
+}
+
+// ------------------------------section PORTFOLIO----------------------------------
+
+.titrePortfolio{
+    font-size: 40px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+@media screen and (max-width:550px){
+    .titrePortfolio{
+        font-size: 25px;
+    }
+}
+
+.diviseurPort{
+    width: 20%;
+}
+
+.portfolioImg{
+    width: 100%;
+    padding-top: 20px;
+    @include FlexCentreX;
+    padding-top: 100px;
+
+    .flexImgPortfolio{
+        width: 1200px;
+        @include FlexCentreX;
+        flex-wrap: wrap;
+    }
+
+    .imgport{
+        width: 300px;
+        margin: 20px;
+        height: 370px;
+        overflow: hidden;
+        box-shadow: 10px 10px 10px 6px rgba(0,0,0,0.3);
+        
+
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+    .imgport:hover{
+        transition: all 0.5s ease;
+        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.4);
+
+
+    }
+
+}
+
+// SECTION PARRALLAX
+
+.parascroll{
+    width: 100%;
+    height: 250px;
+    background: url(../ressources/para.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    @include FlexCentreX;
+    align-items: center;
+
+    h3{
+        color: $blanCasse;
+        font-size: 30px;
+        text-align: center;
+        letter-spacing: 5px;
+    }
+
+
+}
+
+// SECTION CONTACT
+
+.titreForm{
+    text-align: center;
+    font-family: 'poppins',sans-serif;
+    padding-top: 50px;
+}
+
+.formulaire{
+    width: 100%;
+    @include FlexCentreX;
+
+    form{
+        width:60%;
+
+        .row{
+            width: 100%;
+
+
+            input,textarea{
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+
+            }
+
+            textarea{
+                height: 150px;
+            }
+
+            .subbtn{
+                width: 30%;
+                height: 30px;
+                margin: 0 auto;
+                display: block;
+                margin-top: 20px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                
+                &:hover{
+                    background: midnightblue;  
+                    color: $blanCasse;
+                }
+
+            }
+        }
+
+        .row:nth-child(2), .row:nth-child(3){
+            margin-top: 30px;
+        }
+
+    }
+
+}
+
+// section footer
+
+footer{
+    @include FlexCentreX;
+    border: solid dashed $sombre;
+}
+
+
+
+
